@@ -19,16 +19,11 @@ template = """
 pid = st.text_input("怎么称呼您?","")
 cur = st.text_area("最近过得怎么样!", "")
 
-
-prompt = PromptTemplate.from_template(template)
-ipt = prompt.format(id=pid, cur=cur)
-
-
-chat_model = ChatOpenAI(temperature=0, model_name=model_name, openai_api_key=openai_api_key)
-
-
 if st.button("快夸夸我！"):
     with st.spinner("别急别急"):
+        prompt = PromptTemplate.from_template(template)
+        ipt = prompt.format(id=pid, cur=cur)
+        chat_model = ChatOpenAI(temperature=0, model_name=model_name, openai_api_key=openai_api_key)
         result = chat_model.predict(ipt)
         st.success(result)
         st.balloons()
