@@ -1,7 +1,6 @@
 from langchain.prompts import PromptTemplate
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
-import os 
 import streamlit as st
 
 openai_api_key = st.sidebar.text_input('OpenAI API Key')
